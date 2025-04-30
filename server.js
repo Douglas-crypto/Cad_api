@@ -1,6 +1,10 @@
 // index.js (ou server.js, dependendo de qual arquivo você está usando)
 import express, { json } from 'express';
 
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
 const app = express();
 
 app.use(express.json()); // Middleware para analisar o corpo da requisição como JSON
