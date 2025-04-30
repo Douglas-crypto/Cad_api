@@ -11,12 +11,12 @@ app.post('/usuarios', (req, res) => {
     // Adiciona um novo usuário ao array de usuários
     users.push(req.body);
 
-    res.send('Deu bom!');
+    res.status(201).json(req.body);
 });
 
 app.get('/usuarios', (req, res) => {
 
-    res.json(users);
+    res.status(200).json(users);
 });
 
 app.listen(3000, () => {
