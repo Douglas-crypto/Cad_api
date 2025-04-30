@@ -2,6 +2,18 @@ import express from 'express'
 
 const app = express()
 
+const users = []
+
+app.post('/usuario', (req, res) => {
+
+    console.log(req.body)
+
+    res.status(201).json({
+        message: 'Usuario criado com sucesso'
+    })
+
+})
+
 app.get('/usuario', (req, res) => {
 
     app.send('Hola Mundo')
