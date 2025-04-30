@@ -1,24 +1,12 @@
-import express from 'express'
+// index.js (ou server.js, dependendo de qual arquivo você está usando)
+import express from 'express';
 
-const app = express()
+const app = express();
 
-const users = []
-
-app.post('/usuario', (req, res) => {
-
-    console.log(req)
-
-    res.status(201).json({
-        message: 'Usuario criado com sucesso'
-    })
-
-})
-
-app.get('/usuario', (req, res) => {
-
-    app.send('Hola Mundo')
-})
+app.get('/usuarios', (req, res) => {
+    res.send('Deu bom!');
+});
 
 app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000')
-})
+    console.log('Servidor rodando na porta 3000');
+});
