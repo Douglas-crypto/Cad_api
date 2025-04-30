@@ -6,7 +6,7 @@ const users = []
 
 app.post('/usuario', (req, res) => {
 
-    console.log(req.body)
+    console.log(req)
 
     res.status(201).json({
         message: 'Usuario criado com sucesso'
