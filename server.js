@@ -1,5 +1,5 @@
 // index.js (ou server.js, dependendo de qual arquivo você está usando)
-import express from 'express';
+import express, { json } from 'express';
 
 const app = express();
 
@@ -8,15 +8,15 @@ app.use(express.json()); // Middleware para analisar o corpo da requisição com
 const users = [];
 
 app.post('/usuarios', (req, res) => {
-    // Adiciona um novo usuário ao array
-    console.log(req)
+    // Adiciona um novo usuário ao array de usuários
+    users.push(req.body);
 
     res.send('Deu bom!');
 });
 
 app.get('/usuarios', (req, res) => {
 
-    res.send('Deu bom!');
+    res.json(users);
 });
 
 app.listen(3000, () => {
