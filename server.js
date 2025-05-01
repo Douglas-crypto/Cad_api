@@ -8,8 +8,6 @@ const app = express();
 
 app.use(express.json()); // Middleware para analisar o corpo da requisição como JSON
 
-const users = [];
-
  app.post ('/usuarios', async (req, res) => {
     // Adiciona um novo usuário ao array de usuários
     await prisma.user.create({
@@ -23,8 +21,11 @@ const users = [];
     res.status(201).json(req.body);
 });
 
-app.get('/usuarios', (req, res) => {
+app.get('/usuarios', async (req, res) => {
 
+    // Retorna todos os usuários do banco de dados
+    const users = await prisma.user.findMany();
+        
     res.status(200).json(users);
 });
 
