@@ -2,3 +2,8 @@ npm init -y
 npm i express
 node server.js
 node --watch server.js
+npm install prisma --save-dev
+npx prisma init
+npx prisma db push
+npm install @prisma/client
+npx prisma studio
