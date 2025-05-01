@@ -1,5 +1,4 @@
-// index.js (ou server.js, dependendo de qual arquivo você está usando)
-import express, { json } from 'express';
+import express from 'express';
 
 import { PrismaClient } from '@prisma/client'
 
@@ -11,9 +10,15 @@ app.use(express.json()); // Middleware para analisar o corpo da requisição com
 
 const users = [];
 
-app.post('/usuarios', (req, res) => {
+ app.post ('/usuarios', async (req, res) => {
     // Adiciona um novo usuário ao array de usuários
-    users.push(req.body);
+    await prisma.user.create({
+        data: {
+            email: req.body.email,
+            name: req.body.name,
+            age: req.body.age,
+    
+        }    })
 
     res.status(201).json(req.body);
 });
