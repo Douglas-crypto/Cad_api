@@ -29,6 +29,22 @@ app.get('/usuarios', async (req, res) => {
     res.status(200).json(users);
 });
 
+app.put('/usuarios/:id', async (req, res) => {
+    // Adiciona um novo usuário ao array de usuários
+    await prisma.user.update({
+        where: {
+            id: req.params.id
+        },
+        data: {
+            email: req.body.email,
+            name: req.body.name,
+            age: req.body.age,
+        }
+    });
+    
+    res.status(201).json(req.body);
+});
+
 app.listen(3000, () => {
     // Inicia o servidor na porta 3000
     console.log('Servidor rodando na porta 3000');
