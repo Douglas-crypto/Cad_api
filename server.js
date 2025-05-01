@@ -22,12 +22,23 @@ app.use(express.json()); // Middleware para analisar o corpo da requisição com
 });
 
 app.get('/usuarios', async (req, res) => {
+    let users = [];
 
-    // Retorna todos os usuários do banco de dados
-    const users = await prisma.user.findMany();
-        
+    if (req.query) {
+        users = await prisma.user.findMany({
+            where: {
+                name: req.query.name,
+                email: req.query.email,
+                age: req.query.age
+            },
+        });
+    } else {
+        users = await prisma.user.findMany();
+    }
+
     res.status(200).json(users);
 });
+
 
 app.put('/usuarios/:id', async (req, res) => {
     // Adiciona um novo usuário ao array de usuários
