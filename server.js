@@ -1,12 +1,12 @@
 import express from 'express';
-
+import cors from 'cors'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 const app = express();
-
 app.use(express.json()); // Middleware para analisar o corpo da requisição como JSON
+app.use(cors()) // Middleware para permitir requisições de diferentes origens
 
  app.post ('/usuarios', async (req, res) => {
     // Adiciona um novo usuário ao array de usuários
