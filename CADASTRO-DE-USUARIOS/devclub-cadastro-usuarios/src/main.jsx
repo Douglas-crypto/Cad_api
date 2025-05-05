@@ -11,4 +11,5 @@ createRoot(document.getElementById('root')).render(
 
 
 
-//~/Visual Studio/CADASTRO-DE-USUARIOS/devclub-cadastro-usuarios$ 
+//~/Visual Studio/CADASTRO-DE-USUARIOS/devclub-cadastro-usuarios$ para rodar npm run dev
+//~/Visual Studio/Cad_api$ para rodar node server.js
